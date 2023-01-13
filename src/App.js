@@ -1,3 +1,12 @@
+import { StrictMode } from "react";
+import Sidevar from "./components/sidevar/Sidevar";
+
+
 export function App() {
-    return <h1>Hello world!</h1>;
+
+    return (
+      <StrictMode>
+        <Sidevar/>
+      </StrictMode>
+    );
   }
