@@ -1,4 +1,8 @@
-export default function Step({ step_number = 0, step_name, active = false }) {
+export default function Step({
+  step_number = 0,
+  step_name,
+  is_active = false,
+}) {
   return (
     <div
       style={{ zIndex: 5 }}
@@ -6,7 +10,8 @@ export default function Step({ step_number = 0, step_name, active = false }) {
     >
       <span
         className={
-          (active ? "bg-light_blue" : "border border-white text-white") +
+          // Changes the cirlce color when the step is active.
+          (is_active ? "bg-light_blue" : "border border-white text-white") +
           " w-10 h-10 flex items-center justify-center text-sm font-bold rounded-full"
         }
       >
