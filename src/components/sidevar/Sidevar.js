@@ -5,7 +5,6 @@ import shape3 from "../../img/shape3.png";
 import { useEffect, useState } from "react";
 
 export default function Sidevar() {
-  // Approach 2 dynamic step number
   const [stepStatuses, setStepStatuses] = useState([]);
 
   const steps = [
@@ -14,36 +13,16 @@ export default function Sidevar() {
     { step_number: 3, step_name: "ADD-ONS", is_active: false },
     { step_number: 4, step_name: "SUMMARY", is_active: false },
   ];
-  const stepStatusHelper = [];
   useEffect(() => {
-    // Loads initial state for every step element.
+    // Contains the initial state for stepStatuses.
+    const stepStatusHelper = [];
+    // Loads initial value for every step element.
     steps.map((step) => {
       stepStatusHelper.push(step.is_active);
     });
     setStepStatuses(stepStatusHelper);
   }, []);
 
-  // Approach 1 static step number
-  // const [step1, setStep1] = useState({
-  //   step_number: 1,
-  //   step_name: "YOUR INFO",
-  //   is_active: true,
-  // });
-  // const [step2, setStep2] = useState({
-  //   step_number: 2,
-  //   step_name: "SELECT PLAN",
-  //   is_active: false,
-  // });
-  // const [step3, setStep3] = useState({
-  //   step_number: 3,
-  //   step_name: "ADD-ONS",
-  //   is_active: false,
-  // });
-  // const [step4, setStep4] = useState({
-  //   step_number: 4,
-  //   step_name: "SUMMARY",
-  //   is_active: false,
-  // });
   return (
     <aside
       style={{ width: "275px" }}
