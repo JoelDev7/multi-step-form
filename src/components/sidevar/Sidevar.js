@@ -14,13 +14,7 @@ export default function Sidevar() {
     { step_number: 4, step_name: "SUMMARY", is_active: false },
   ];
   useEffect(() => {
-    // Contains the initial state for stepStatuses.
-    const stepStatusHelper = [];
-    // Loads initial value for every step element.
-    steps.map((step) => {
-      stepStatusHelper.push(step.is_active);
-    });
-    setStepStatuses(stepStatusHelper);
+    setStepStatuses(steps);
   }, []);
 
   return (
@@ -31,18 +25,10 @@ export default function Sidevar() {
       <div style={{ marginBottom: "250px" }} className="pl-7 pt-8">
         {/* Still don't know why but semicolons at the end of jsx elements create
         vertical spaces.*/}
-        <Step
-          step_number={1}
-          step_name={"YOUR INFO"}
-          active={stepStatuses[0]}
-        />
-        <Step
-          step_number={2}
-          step_name={"SELECT PLAN"}
-          active={stepStatuses[1]}
-        />
-        <Step step_number={3} step_name={"ADD-ONS"} active={stepStatuses[2]} />
-        <Step step_number={4} step_name={"SUMMARY"} active={stepStatuses[3]} />
+        {stepStatuses.map((step, i) => {
+          // Never forget the return statement.
+          return <Step {...step} key={step.step_name} />;
+        })}
       </div>
       <img
         src={shape1}
