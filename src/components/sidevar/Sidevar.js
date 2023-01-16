@@ -2,20 +2,16 @@ import Step from "./Step";
 import shape1 from "../../img/shape1.png";
 import shape2 from "../../img/shape2.png";
 import shape3 from "../../img/shape3.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Sidevar() {
-  const [stepStatuses, setStepStatuses] = useState([]);
-
   const steps = [
     { step_number: 1, step_name: "YOUR INFO", is_active: true },
     { step_number: 2, step_name: "SELECT PLAN", is_active: false },
     { step_number: 3, step_name: "ADD-ONS", is_active: false },
     { step_number: 4, step_name: "SUMMARY", is_active: false },
   ];
-  useEffect(() => {
-    setStepStatuses(steps);
-  }, []);
+  const [stepStatuses, setStepStatuses] = useState(steps);
 
   return (
     <aside
@@ -25,7 +21,7 @@ export default function Sidevar() {
       <div style={{ marginBottom: "250px" }} className="pl-7 pt-8">
         {/* Still don't know why but semicolons at the end of jsx elements create
         vertical spaces.*/}
-        {stepStatuses.map((step, i) => {
+        {stepStatuses.map((step) => {
           // Never forget the return statement.
           return <Step {...step} key={step.step_name} />;
         })}
@@ -35,8 +31,8 @@ export default function Sidevar() {
         style={{
           width: "400px",
           position: "absolute",
-          bottom: "-31%",
-          right: "-37%",
+          bottom: "-125px",
+          right: "-110px",
           rotate: "-45deg",
           zIndex: 1,
         }}
@@ -48,8 +44,8 @@ export default function Sidevar() {
           maxWidth: "1000px", // Necesary to override tailwind's responsive image and video directive colliding with this style settings.
           width: "380px",
           position: "absolute",
-          bottom: "-15%",
-          left: "-51%",
+          bottom: "-65px",
+          left: "-142px",
           rotate: "47deg",
         }}
         alt=""
@@ -60,8 +56,8 @@ export default function Sidevar() {
           maxWidth: "200px", // Necesary to override tailwind's responsive image and video directive colliding with this style settings.
           width: "52px",
           position: "absolute",
-          bottom: "21%",
-          left: "55%",
+          bottom: "78px",
+          right: "60px",
           zIndex: 2,
         }}
         alt=""

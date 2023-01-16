@@ -12,7 +12,7 @@ export default function Step({
         className={
           // Changes the cirlce color when the step is active.
           (is_active ? "bg-light_blue" : "border border-white text-white") +
-          " w-10 h-10 flex items-center justify-center text-sm font-bold rounded-full"
+          " w-10 h-10 flex items-center justify-center text-xl font-bold rounded-full"
         }
       >
         {" "}
