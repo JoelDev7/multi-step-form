@@ -1,6 +1,9 @@
-export default function Step({ step_number, step_name, active }) {
+export default function Step({ step_number = 0, step_name, active = false }) {
   return (
-    <div className="bg-purplish_blue flex flex-row items-center p-1">
+    <div
+      style={{ zIndex: 5 }}
+      className="bg-purplish_blue relative flex flex-row items-center p-1 mb-5"
+    >
       <span
         className={
           (active ? "bg-light_blue" : "border border-white text-white") +
