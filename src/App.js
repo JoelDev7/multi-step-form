@@ -1,12 +1,12 @@
 import { StrictMode } from "react";
-import Sidevar from "./components/sidevar/Sidevar";
-
+import GameRegistrationWrapper from "./components/GameRegistrationWrapper";
 
 export function App() {
-
-    return (
-      <StrictMode>
-        <Sidevar/>
-      </StrictMode>
-    );
-  }
+  return (
+    <StrictMode>
+      <div className="h-screen flex justify-center items-center">
+        <GameRegistrationWrapper />
+      </div>
+    </StrictMode>
+  );
+}
