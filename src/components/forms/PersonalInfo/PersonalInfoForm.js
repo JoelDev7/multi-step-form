@@ -1,4 +1,6 @@
 import { useState } from "react";
+import DiscreteButton from "../buttons/DiscreteButton";
+import SolidButton from "../buttons/SolidButton";
 import Input from "./Input";
 
 export default function PersonalInfoForm() {
@@ -33,6 +35,8 @@ export default function PersonalInfoForm() {
       {formInputsStates.map((input) => {
         return <Input {...input} />;
       })}
+      <DiscreteButton text={"Go Back"} />
+      <SolidButton text={"Next Step"} />
     </form>
   );
 }
