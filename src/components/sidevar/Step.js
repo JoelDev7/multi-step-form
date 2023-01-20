@@ -7,17 +7,19 @@ export default function Step({
     <div
       style={{ zIndex: 5 }}
       className="bg-purplish_blue relative flex flex-row items-center p-1 mb-5"
+      role={"button"}
+      tabIndex={0}
     >
-      <span
+      <div
         className={
           // Changes the cirlce color when the step is active.
           (is_active ? "bg-light_blue" : "border border-white text-white") +
-          " w-10 h-10 flex items-center justify-center text-xl font-bold rounded-full"
+          " w-10 h-10 flex items-center justify-center text-lg font-medium rounded-full"
         }
       >
         {" "}
         {step_number}
-      </span>
+      </div>
       <h2 className="text-white ml-3">
         <span className="block font-thin text-sm">STEP {step_number}</span>
         <span className="block  font-bold text-sm">{step_name}</span>
