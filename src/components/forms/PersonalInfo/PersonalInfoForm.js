@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import SolidButton from "../buttons/SolidButton";
 import Input from "./Input";
@@ -30,7 +29,6 @@ export default function PersonalInfoForm() {
       error_message: "This field is required",
     },
   ];
-  const [formInputsStates, setFormInputsStates] = useState(formInputs);
   const {
     register,
     handleSubmit,
@@ -56,7 +54,7 @@ export default function PersonalInfoForm() {
           Please provide your name, email address, and phone number.
         </p>
         <div className="flex flex-col">
-          {formInputsStates.map((input) => {
+          {formInputs.map((input) => {
             return (
               <Input
                 {...input}
