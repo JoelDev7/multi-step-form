@@ -18,7 +18,7 @@ export default function Sidevar() {
       style={{ width: "275px" }}
       className="bg-purplish_blue rounded-xl overflow-hidden relative"
     >
-      <div style={{ marginBottom: "250px" }} className="pl-7 pt-8">
+      <div style={{ marginBottom: "250px" }} className="px-7 py-8">
         {/* Still don't know why but semicolons at the end of jsx elements create
         vertical spaces.*/}
         {stepStatuses.map((step) => {
@@ -64,6 +64,4 @@ export default function Sidevar() {
       />
     </aside>
   );
-
-  // "total form size 600x940";
 }
