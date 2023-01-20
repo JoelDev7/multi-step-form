@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import SolidButton from "../buttons/SolidButton";
 import Input from "./Input";
 
@@ -9,23 +10,39 @@ export default function PersonalInfoForm() {
       id: "name",
       type: "text",
       placeholder: "e.g. Stephen King",
+      validators: { required: true },
+      error_message: "This field is required",
     },
     {
       label: "Email Address",
       id: "email_address",
       type: "email",
       placeholder: "e.g. stephenking@lorem.com",
+      validators: { required: true },
+      error_message: "This field is required",
     },
     {
       label: "Phone Number",
       id: "phone_number",
       type: "tel",
       placeholder: "e.g. +1 234 567 890",
+      validators: { required: true },
+      error_message: "This field is required",
     },
   ];
   const [formInputsStates, setFormInputsStates] = useState(formInputs);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
   return (
-    <form id="PersonalInfoForm" className="p-4 flex flex-col justify-between">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      id="PersonalInfoForm"
+      className="p-4 flex flex-col justify-between"
+    >
       <div>
         <label
           htmlFor="PersonalInfoForm"
@@ -40,7 +57,14 @@ export default function PersonalInfoForm() {
         </p>
         <div className="flex flex-col">
           {formInputsStates.map((input) => {
-            return <Input {...input} key={input.id} />;
+            return (
+              <Input
+                {...input}
+                key={input.id}
+                register={register}
+                show_error={errors[input.id]}
+              />
+            );
           })}
         </div>
       </div>
