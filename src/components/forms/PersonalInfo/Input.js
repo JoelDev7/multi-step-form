@@ -5,7 +5,7 @@ export default function Input({
   placeholder,
   register,
   validators,
-  show_error,
+  show_error = false,
   error_message,
 }) {
   return (
@@ -23,10 +23,10 @@ export default function Input({
       <input
         id={id}
         className={
-          "border border-light_gray text-marine_blue px-4 py-2 font-medium mb-5 rounded-md focus-within:outline-none" +
+          " text-marine_blue px-4 py-2 font-medium mb-5 rounded-md focus-within:outline-none focus-within:border-purplish_blue" +
           (show_error
-            ? "border-r-strawberry_red"
-            : "focus-within:border-purplish_blue")
+            ? " border border-strawberry_red border-opacity-60"
+            : " border border-light_gray")
         }
         type={type}
         placeholder={placeholder}
