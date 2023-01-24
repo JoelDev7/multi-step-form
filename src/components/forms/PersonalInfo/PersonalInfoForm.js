@@ -39,12 +39,12 @@ export default function PersonalInfoForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       id="PersonalInfoForm"
-      className="p-4 flex flex-col justify-between"
+      className="m-5 p-5 md:p-0 flex flex-col justify-between relative -top-14 md:top-0 z-10 bg-white rounded-md"
     >
       <div>
         <label
           htmlFor="PersonalInfoForm"
-          className="text-4xl text-marine_blue font-medium inline-block mb-2 mt-5"
+          className="text-4xl text-marine_blue font-medium inline-block mb-2 mt-2"
         >
           {" "}
           Personal Info

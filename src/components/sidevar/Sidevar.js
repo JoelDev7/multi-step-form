@@ -14,11 +14,8 @@ export default function Sidevar() {
   const [stepStatuses, setStepStatuses] = useState(steps);
 
   return (
-    <aside
-      style={{ width: "275px" }}
-      className="bg-purplish_blue rounded-xl overflow-hidden relative"
-    >
-      <div style={{ marginBottom: "250px" }} className="px-7 py-8">
+    <aside className="bg-purplish_blue sm:rounded-none md:rounded-xl overflow-hidden relative h-full w-full md:w-[250]">
+      <div className="px-7 py-8 h-full flex flex-row md:flex-col w-full justify-center items-center md:justify-start md:items-start">
         {/* Still don't know why but semicolons at the end of jsx elements create
         vertical spaces.*/}
         {stepStatuses.map((step) => {

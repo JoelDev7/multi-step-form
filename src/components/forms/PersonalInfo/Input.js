@@ -22,7 +22,12 @@ export default function Input({
       </div>
       <input
         id={id}
-        className="border border-light_gray text-marine_blue px-4 py-2 font-medium mb-5 rounded-md focus-within:outline-none focus-within:border-purplish_blue"
+        className={
+          "border border-light_gray text-marine_blue px-4 py-2 font-medium mb-5 rounded-md focus-within:outline-none" +
+          (show_error
+            ? "border-r-strawberry_red"
+            : "focus-within:border-purplish_blue")
+        }
         type={type}
         placeholder={placeholder}
         {...register(id, validators)}

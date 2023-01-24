@@ -6,7 +6,7 @@ export default function Step({
   return (
     <div
       style={{ zIndex: 5 }}
-      className="bg-purplish_blue relative flex flex-row items-center p-1 mb-5"
+      className="relative flex flex-row items-center p-1 mb-5"
       role={"button"}
       tabIndex={0}
     >
@@ -20,7 +20,7 @@ export default function Step({
         {" "}
         {step_number}
       </div>
-      <h2 className="text-white ml-3">
+      <h2 className="text-white ml-3 hidden md:inline">
         <span className="block font-thin text-sm">STEP {step_number}</span>
         <span className="block  font-bold text-sm">{step_name}</span>
       </h2>
