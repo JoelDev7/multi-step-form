@@ -39,7 +39,7 @@ export default function PersonalInfoForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       id="PersonalInfoForm"
-      className="m-5 p-5 md:p-0 flex flex-col justify-between relative -top-14 md:top-0 z-10 bg-white rounded-md"
+      className="m-5 p-5 md:p-0 shadow-xl md:shadow-none flex flex-col justify-between relative -top-14 md:top-0 z-10 bg-white rounded-md"
     >
       <div>
         <label
