@@ -66,7 +66,7 @@ export default function PersonalInfoForm() {
           })}
         </div>
       </div>
-      <div className="flex justify-end self-end">
+      <div className="justify-end self-end hidden md:block">
         <SolidButton text={"Next Step"} />
       </div>
     </form>
