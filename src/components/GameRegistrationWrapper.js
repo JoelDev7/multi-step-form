@@ -9,16 +9,17 @@ export default function GameRegistrationWrapper() {
    * @param {number} index The index associated to the active step and form components.
    */
   function displayActiveForm(index) {
-    let currentFormState = [...activeForm];
-    currentFormState.forEach((element) => {
-      element = false;
-    });
-    setActiveForm((currentFormState[index - 1] = true));
+    let currentFormState = activeForm.map((element) => false);
+    currentFormState[index - 1] = true;
+    setActiveForm(currentFormState);
   }
   return (
     <div className="p-0 md:p-4 my-auto flex flex-col md:flex-row bg-white rounded-none md:rounded-xl lg:min-h-[550] lg:min-w-[900]">
       <div>
-        <Sidevar />
+        <Sidevar
+          activeForm={activeForm}
+          displayActiveForm={displayActiveForm}
+        />
       </div>
       <div className="w-full flex justify-around">
         {activeForm[0] ? <PersonalInfoForm /> : null}

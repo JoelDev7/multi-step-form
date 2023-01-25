@@ -2,25 +2,30 @@ import Step from "./Step";
 import shape1 from "../../img/shape1.png";
 import shape2 from "../../img/shape2.png";
 import shape3 from "../../img/shape3.png";
-import { useState } from "react";
 
-export default function Sidevar() {
+export default function Sidevar({ activeForm, displayActiveForm }) {
   const steps = [
-    { step_number: 1, step_name: "YOUR INFO", is_active: true },
-    { step_number: 2, step_name: "SELECT PLAN", is_active: false },
-    { step_number: 3, step_name: "ADD-ONS", is_active: false },
-    { step_number: 4, step_name: "SUMMARY", is_active: false },
+    { step_number: 1, step_name: "YOUR INFO" },
+    { step_number: 2, step_name: "SELECT PLAN" },
+    { step_number: 3, step_name: "ADD-ONS" },
+    { step_number: 4, step_name: "SUMMARY" },
   ];
-  const [stepStatuses, setStepStatuses] = useState(steps);
 
   return (
     <aside className="bg-purplish_blue sm:rounded-none md:rounded-xl overflow-hidden relative h-full w-full md:w-[250]">
       <div className="px-7 py-8 h-full flex flex-row md:flex-col w-full justify-center items-center md:justify-start md:items-start">
         {/* Still don't know why but semicolons at the end of jsx elements create
         vertical spaces.*/}
-        {stepStatuses.map((step) => {
+        {steps.map((step, i) => {
           // Never forget the return statement.
-          return <Step {...step} key={step.step_name} />;
+          return (
+            <Step
+              {...step}
+              is_active={activeForm[i]}
+              displayActiveForm={displayActiveForm}
+              key={step.step_name}
+            />
+          );
         })}
       </div>
       <img

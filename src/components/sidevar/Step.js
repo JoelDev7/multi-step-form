@@ -1,7 +1,8 @@
 export default function Step({
-  step_number = 0,
+  step_number = 1,
   step_name,
   is_active = false,
+  displayActiveForm,
 }) {
   return (
     <div
@@ -9,6 +10,7 @@ export default function Step({
       className="relative flex flex-row items-center p-1 mb-5"
       role={"button"}
       tabIndex={0}
+      onClick={() => displayActiveForm(step_number)}
     >
       <div
         className={
