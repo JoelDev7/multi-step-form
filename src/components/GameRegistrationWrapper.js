@@ -1,6 +1,8 @@
 import { useState } from "react";
 import PersonalInfoForm from "./forms/PersonalInfo/PersonalInfoForm";
 import Sidevar from "./sidevar/Sidevar";
+import DiscreteButton from "./forms/buttons/DiscreteButton";
+import SolidButton from "./forms/buttons/SolidButton";
 
 export default function GameRegistrationWrapper() {
   const [activeForm, setActiveForm] = useState([true, false, false, false]);
@@ -14,7 +16,7 @@ export default function GameRegistrationWrapper() {
     setActiveForm(currentFormState);
   }
   return (
-    <div className="p-0 md:p-4 my-auto flex flex-col md:flex-row bg-white rounded-none md:rounded-xl lg:min-h-[550] lg:min-w-[900]">
+    <div className="p-0 md:p-3 my-auto flex flex-col md:flex-row bg-none md:bg-white rounded-none md:rounded-xl w-full md:w-10/12 lg:w-8/12 lg:h-[85vh]">
       <div>
         <Sidevar
           activeForm={activeForm}
@@ -38,6 +40,10 @@ export default function GameRegistrationWrapper() {
             Form 4
           </div>
         ) : null}
+      </div>
+      <div className="flex md:hidden w-full pl-0 pr-4 py-5 bg-light_gray justify-between items-center">
+        <DiscreteButton text={"Go Back"} />
+        <SolidButton text={"Next Step"} />
       </div>
     </div>
   );
