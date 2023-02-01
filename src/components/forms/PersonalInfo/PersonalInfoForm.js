@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import SolidButton from "../buttons/SolidButton";
 import Input from "./Input";
 
-export default function PersonalInfoForm() {
+export default function PersonalInfoForm({ setActiveFormId, addFormData }) {
   const formInputs = [
     {
       label: "Name",
@@ -34,7 +35,14 @@ export default function PersonalInfoForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    addFormData(data);
+    console.log("next step");
+  };
+  useEffect(() => {
+    setActiveFormId("PersonalInfoForm");
+    console.log("PersonalInfoForm");
+  }, []);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
