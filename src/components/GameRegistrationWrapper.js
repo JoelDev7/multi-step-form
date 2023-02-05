@@ -6,16 +6,30 @@ import SolidButton from "./forms/buttons/SolidButton";
 
 export default function GameRegistrationWrapper() {
   const [formData, setFormData] = useState("");
-  const [activeForm, setActiveForm] = useState([true, false, false, false]);
-  const [activeFormId, setActiveFormId] = useState("");
+  const [activeForm, setActiveForm] = useState(0);
+  const forms = [
+    {
+      form: (
+        <PersonalInfoForm
+          formId={"PersonalInfoForm"}
+          formData={formData}
+          addFormData={addFormData}
+          activeForm={activeForm}
+          displayActiveForm={displayActiveForm}
+        />
+      ),
+      formId: "PersonalInfoForm",
+    },
+    { form: <h1>Title 2</h1>, formId: "" },
+    { form: <h1>Title 3</h1>, formId: "" },
+    { form: <h1>Title 4</h1>, formId: "" },
+  ];
   /**
    * Sets de active state of the form currently displayed and marks the step associated.
    * @param {number} index The index associated to the active step and form components.
    */
   function displayActiveForm(index) {
-    let currentFormState = activeForm.map((element) => false);
-    currentFormState[index - 1] = true;
-    setActiveForm(currentFormState);
+    setActiveForm(index);
   }
   /**
    * Adds the local data from the form to the general data container to crearte the registration.
@@ -39,34 +53,12 @@ export default function GameRegistrationWrapper() {
           displayActiveForm={displayActiveForm}
         />
       </div>
-      <div className="w-full flex justify-around">
-        {activeForm[0] ? (
-          <PersonalInfoForm
-            setActiveFormId={setActiveFormId}
-            addFormData={addFormData}
-          />
-        ) : null}
-        {activeForm[1] ? (
-          <div className="w-full h-full font-semibold text-xl flex justify-center items-center">
-            form 2
-          </div>
-        ) : null}
-        {activeForm[2] ? (
-          <div className="w-full h-full font-semibold text-xl flex justify-center items-center">
-            form 3
-          </div>
-        ) : null}
-        {activeForm[3] ? (
-          <div className="w-full h-full font-semibold text-xl flex justify-center items-center">
-            Form 4
-          </div>
-        ) : null}
-      </div>
+      <div className="w-full flex justify-around">{forms[activeForm].form}</div>
       <div className="flex md:hidden w-full pl-0 pr-4 py-5 bg-light_gray bg-opacity-60 justify-between items-center">
-        <DiscreteButton text={"Go Back"} />
-        <SolidButton text={"Next Step"} form_id={activeFormId} />
+        {activeForm !== 0 ? <DiscreteButton text={"Go Back"} /> : <div></div>}
+        <SolidButton text={"Next Step"} form_id={forms[activeForm].formId} />
       </div>
-      <button onClick={() => subscriveUser()}>Send data</button>
+      <button onClick={() => subscriveUser()}>send data</button>
     </div>
   );
 }
