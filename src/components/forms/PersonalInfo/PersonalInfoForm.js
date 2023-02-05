@@ -1,9 +1,14 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import SolidButton from "../buttons/SolidButton";
 import Input from "./Input";
 
-export default function PersonalInfoForm({ setActiveFormId, addFormData }) {
+export default function PersonalInfoForm({
+  formId,
+  formData,
+  addFormData,
+  activeForm,
+  displayActiveForm,
+}) {
   const formInputs = [
     {
       label: "Name",
@@ -36,22 +41,19 @@ export default function PersonalInfoForm({ setActiveFormId, addFormData }) {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
+    console.log(data);
     addFormData(data);
-    console.log("next step");
+    displayActiveForm(activeForm + 1);
   };
-  useEffect(() => {
-    setActiveFormId("PersonalInfoForm");
-    console.log("PersonalInfoForm");
-  }, []);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      id="PersonalInfoForm"
+      id={formId}
       className="m-5 p-5 md:p-0 shadow-xl md:shadow-none flex flex-col justify-between relative -top-14 md:top-0 z-10 bg-white rounded-md"
     >
       <div>
         <label
-          htmlFor="PersonalInfoForm"
+          htmlFor={formId}
           className="text-4xl text-marine_blue font-medium inline-block mb-2 mt-2"
         >
           {" "}
@@ -66,6 +68,7 @@ export default function PersonalInfoForm({ setActiveFormId, addFormData }) {
             return (
               <Input
                 {...input}
+                default_value={formData[input.id]}
                 key={input.id}
                 register={register}
                 show_error={errors[input.id]}

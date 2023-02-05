@@ -17,11 +17,10 @@ export default function Sidevar({ activeForm, displayActiveForm }) {
         {/* Still don't know why but semicolons at the end of jsx elements create
         vertical spaces.*/}
         {steps.map((step, i) => {
-          // Never forget the return statement.
           return (
             <Step
               {...step}
-              is_active={activeForm[i]}
+              activeForm={activeForm}
               displayActiveForm={displayActiveForm}
               key={step.step_name}
             />

@@ -1,7 +1,7 @@
 export default function Step({
   step_number = 1,
   step_name,
-  is_active = false,
+  activeForm,
   displayActiveForm,
 }) {
   return (
@@ -10,12 +10,14 @@ export default function Step({
       className="relative flex flex-row items-center p-1 mb-5"
       role={"button"}
       tabIndex={0}
-      onClick={() => displayActiveForm(step_number)}
+      onClick={() => displayActiveForm(step_number - 1)}
     >
       <div
         className={
           // Changes the cirlce color when the step is active.
-          (is_active ? "bg-light_blue" : "border border-white text-white") +
+          (activeForm + 1 === step_number
+            ? "bg-light_blue"
+            : "border border-white text-white") +
           " w-10 h-10 flex items-center justify-center text-lg font-medium rounded-full"
         }
       >

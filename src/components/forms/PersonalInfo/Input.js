@@ -3,6 +3,7 @@ export default function Input({
   id,
   type,
   placeholder,
+  default_value,
   register,
   validators,
   show_error,
@@ -30,6 +31,7 @@ export default function Input({
         }
         type={type}
         placeholder={placeholder}
+        defaultValue={default_value}
         {...register(id, validators)}
       />
     </>
