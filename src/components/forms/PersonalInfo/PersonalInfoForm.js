@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import SolidButton from "../buttons/SolidButton";
 import Input from "./Input";
 
 export default function PersonalInfoForm({
@@ -46,23 +45,8 @@ export default function PersonalInfoForm({
     displayActiveForm(activeForm + 1);
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      id={formId}
-      className="m-5 p-5 md:p-0 shadow-xl md:shadow-none flex flex-col justify-between relative -top-14 md:top-0 z-10 bg-white rounded-md"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} id={formId} className="">
       <div>
-        <label
-          htmlFor={formId}
-          className="text-4xl text-marine_blue font-medium inline-block mb-2 mt-2"
-        >
-          {" "}
-          Personal Info
-        </label>
-        <p className="text-cool_gray mb-7">
-          {" "}
-          Please provide your name, email address, and phone number.
-        </p>
         <div className="flex flex-col">
           {formInputs.map((input) => {
             return (
@@ -76,9 +60,6 @@ export default function PersonalInfoForm({
             );
           })}
         </div>
-      </div>
-      <div className="justify-end self-end hidden md:block">
-        <SolidButton text={"Next Step"} />
       </div>
     </form>
   );
