@@ -4,6 +4,7 @@ import Sidevar from "./sidevar/Sidevar";
 import DiscreteButton from "./forms/buttons/DiscreteButton";
 import SolidButton from "./forms/buttons/SolidButton";
 import ActiveFormContainer from "./forms/ActiveFormContainer";
+import SelectYourPlanForm from "./forms/SelectYourPlan/SelectYourPlanForm";
 
 export default function GameRegistrationWrapper() {
   const [activeForm, setActiveForm] = useState(0);
@@ -25,13 +26,15 @@ export default function GameRegistrationWrapper() {
       formId: "PersonalInfoForm",
     },
     {
-      title: "Other",
-      form_description:
-        "Please provide your name, email address, and phone number.",
+      title: "Select Your Plan",
+      form_description: "You have the option of monthly or yearly billing.",
       form: (
-        <PersonalInfoForm {...generalFormProps} formId={"PersonalInfoForm"} />
+        <SelectYourPlanForm
+          {...generalFormProps}
+          formId={"SelectYourPlanForm"}
+        />
       ),
-      formId: "PersonalInfoForm",
+      formId: "SelectYourPlanForm",
     },
   ];
   /**
