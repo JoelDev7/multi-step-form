@@ -3,7 +3,7 @@ export default function Input({
   id,
   type,
   placeholder,
-  default_value,
+  default_value = "",
   register,
   validators,
   show_error,
