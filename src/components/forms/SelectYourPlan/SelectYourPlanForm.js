@@ -3,6 +3,8 @@ import PlanCard from "./PlanCard";
 import arcade from "../../../img/icon-arcade.svg";
 import advanced from "../../../img/icon-advanced.svg";
 import pro from "../../../img/icon-pro.svg";
+import { useState } from "react";
+import TimespanSelector from "./TimespanSelector";
 
 export default function SelectYourPlanForm(
   formId,
@@ -28,6 +30,10 @@ export default function SelectYourPlanForm(
       plan_cost: "$15/mo",
     },
   ];
+  const [selection, setSelection] = useState({
+    selected_plan: "",
+    timespan: "",
+  });
   const {
     register,
     handleSubmit,
@@ -40,9 +46,12 @@ export default function SelectYourPlanForm(
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} id={formId}>
-      {planCards.map((plan) => {
-        return <PlanCard {...plan} key={plan.plan_title} />;
-      })}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {planCards.map((plan) => {
+          return <PlanCard {...plan} key={plan.plan_title} />;
+        })}
+      </div>
+      <TimespanSelector />
     </form>
   );
 }
