@@ -6,13 +6,13 @@ import pro from "../../../img/icon-pro.svg";
 import { useState } from "react";
 import TimespanSelector from "./TimespanSelector";
 
-export default function SelectYourPlanForm(
+export default function SelectYourPlanForm({
   formId,
   formData,
   addFormData,
   activeForm,
-  displayActiveForm
-) {
+  displayActiveForm,
+}) {
   const planCards = [
     {
       plan_icon: arcade,
@@ -31,27 +31,30 @@ export default function SelectYourPlanForm(
     },
   ];
   const [selection, setSelection] = useState({
-    selected_plan: "",
-    timespan: "",
+    selected_plan: "Arcade",
+    is_yearly: true,
   });
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
-    addFormData(data);
+    console.log(selection);
+    addFormData(selection);
     displayActiveForm(activeForm + 1);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} id={formId}>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {planCards.map((plan) => {
-          return <PlanCard {...plan} key={plan.plan_title} />;
+          return (
+            <PlanCard
+              {...plan}
+              {...selection}
+              setSelection={setSelection}
+              key={plan.plan_title}
+            />
+          );
         })}
       </div>
-      <TimespanSelector />
+      <TimespanSelector {...selection} setSelection={setSelection} />
     </form>
   );
 }
