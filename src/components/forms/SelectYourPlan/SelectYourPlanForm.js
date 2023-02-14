@@ -17,22 +17,26 @@ export default function SelectYourPlanForm({
     {
       plan_icon: arcade,
       plan_title: "Arcade",
-      plan_cost: "$9/mo",
+      plan_cost_mo: "$9/mo",
+      plan_cost_yr: "$90/yr",
     },
     {
       plan_icon: advanced,
       plan_title: "Advanced",
-      plan_cost: "$12/mo",
+      plan_cost_mo: "$12/mo",
+      plan_cost_yr: "$120/yr",
     },
     {
       plan_icon: pro,
       plan_title: "Pro",
-      plan_cost: "$15/mo",
+      plan_cost_mo: "$15/mo",
+      plan_cost_yr: "$150/yr",
     },
   ];
   const [selection, setSelection] = useState({
-    selected_plan: "Arcade",
-    is_yearly: true,
+    selected_plan:
+      formData.selected_plan !== undefined ? formData.selected_plan : "Arcade",
+    is_yearly: formData.is_yearly !== undefined ? formData.is_yearly : true,
   });
   const { handleSubmit } = useForm();
   const onSubmit = (data) => {
